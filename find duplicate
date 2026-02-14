@@ -1,0 +1,9 @@
+def find_duplicate(nums):
+    sorted_arr=sorted(nums)
+    for i in range(1,len(sorted_arr)):
+        if sorted_arr[i-1]==sorted_arr[i]:
+          return sorted_arr[i]
+    return -1
+nums=[1,2,3,3,4,5]
+result=(find_duplicate(nums))
+print(result)

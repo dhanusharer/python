@@ -1,0 +1,30 @@
+def cycle_sort(array):
+    # Iterate through the array, considering each index as a starting position
+    for cycleStart in range(0, len(array) - 1):
+        item = array[cycleStart]
+        pos = cycleStart
+
+        # Count the number of elements smaller than the current item
+        for i in range(cycleStart + 1, len(array)):
+            if array[i] < item:
+                pos += 1
+
+        # If the item is already in the correct position, continue
+        if pos == cycleStart:
+            continue
+
+        # Place the item at its correct position
+        while item == array[pos]:
+            pos += 1
+        array[pos], item = item, array[pos]
+
+        # Rotate the remaining cycle
+        while pos != cycleStart:
+            pos = cycleStart
+            for i in range(cycleStart + 1, len(array)):
+                if array[i] < item:
+                    pos += 1
+
+            while item == array[pos]:
+                pos += 1
+            array[pos], item = item, array[pos]

@@ -1,0 +1,35 @@
+class Node:
+     def __init__(self,value):
+        self.data=value
+        self.next=None
+
+def print_linked_list(head):
+    current=head
+    while current is not None:
+        print(current.data)
+        current=current.next
+
+
+
+    
+def insert_at_end(head,value):
+   
+        new_node = Node(value)
+
+        if head is None:
+            return new_node
+
+        else:
+            current=head
+            while current.next is not None:
+                current=current.next
+            current.next=new_node
+            return head
+ 
+
+head=Node(10)
+head.next=Node(20)
+#  head.next.next=Node(30)
+#  head.next.next.next=Node(40)
+head= insert_at_end(head,0)
+print_linked_list(head)

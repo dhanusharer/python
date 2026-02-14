@@ -1,0 +1,59 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+        self.prev=None
+
+class doubly_linked_list:
+    def __init__(self) :
+        self.head=None 
+#insert at begging 
+    def insert_at_start(self,data):
+        new_node=Node(data)
+        if self.head==None:
+             self.head=new_node
+        else:
+            new_node.next=self.head
+            self.head.prev=new_node
+            self.head=new_node
+#insert at end
+    def insert_at_end(self,data):
+        new_node=Node(data)
+        if self.head==None:
+            self.head=new_node
+        else:
+            temp=self.head
+            while temp.next is  not None:
+                temp=temp.next
+            temp.next=new_node
+            new_node.prev=temp
+            new_node.next=None
+#insert at middle
+    def insert_at_position(self,data,pos):
+        new_node=Node(data)
+        if pos==0:
+            self.insert_at_start(data)
+        else:
+            temp=self.head
+            for i in range(pos-1):
+                temp=temp.next
+                if temp is None:
+                    raise IndexError
+            new_node.next=temp.next
+            new_node.prev=temp
+            if temp.next:
+                temp.next.prev=new_node
+            temp.next=new_node
+    def display(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end=" <-> " if temp.next else "\n")
+            temp = temp.next
+
+dll=doubly_linked_list()
+dll.insert_at_end(10)
+dll.insert_at_end(20)
+dll.insert_at_start(5)
+dll.insert_at_position(25,3)
+
+dll.display()

@@ -1,0 +1,35 @@
+class Node:
+   def __init__(self,value):
+      self.data=value
+      self.next=None
+def delete_node(head,value):
+    if head is None:
+      print("no element")
+      return None
+
+    if head.data==value:
+      new_head=head.next
+      head.next=None
+      return new_head
+    current=head
+    while current.next is not None and current.next.data != value:
+        current=current.next
+    if current.next is None:
+        print("Value not found")
+        return head
+    temp=current.next
+    current.next=current.next.next
+    temp.next=None
+    return head
+def print_linked_list(head):
+    current = head
+    while current is not None :
+    
+      print(current.data,end="->")
+      current=current.next
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30)
+
+head= delete_node(head,20)
+print_linked_list(head)

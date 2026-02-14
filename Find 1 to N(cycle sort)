@@ -1,0 +1,25 @@
+def find_missing_cycle_sort(nums):
+    # Get the length of the array
+    n = len(nums)
+    i = 0
+
+    # Cycle sort to place numbers in their correct index
+    while i < n:
+        correct_index = nums[i]  # The correct position where nums[i] should be placed
+
+        # Swap only if the number is within range and not already in the correct position
+        if (nums[i] < n) and nums[i] != nums[correct_index]:
+            nums[i], nums[correct_index] = nums[correct_index], nums[i]  # Swap elements
+        else:
+            i += 1  # Move to the next index
+
+    # Find the first missing number by checking if nums[i] matches its index
+    for i in range(n):
+        if nums[i] != i:
+            return i  # Return the first missing number
+
+    # If all numbers are in place, the missing number is n
+    return n
+data=[1,3,4,0,6,7,5]
+result=find_missing_cycle_sort(data)
+print(result)

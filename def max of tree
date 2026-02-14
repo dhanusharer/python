@@ -1,0 +1,8 @@
+def max_of_tree(root):
+    if(root is None)or(root.left is None and.right is None):
+      return root
+    max_left=max_of_tree(root.left)
+    right_max=max_of_tree(root.right)
+    return max(max_left.right_max,root,
+               key=lambda x: x.val if x else float('-inf'))
+max_of_tree(root).val

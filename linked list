@@ -1,0 +1,58 @@
+class Node:
+     def __init__(self,value):
+        self.data=value
+        self.next=None
+
+
+
+
+class linkedlist:
+    def __init__(self):
+        self.head=None
+    #adding node to linked list
+    def add_node(self,value):
+        new_node = Node(value)
+
+        if self.head is None:
+            self.head=new_node
+
+
+        else:
+            current=self.head
+            while current.next is not None:
+                current=current.next
+            current.next=new_node
+
+l1=linkedlist()
+l1.add_node(value=10)
+l1.add_node(value=15)
+l1.add_node(value=20)
+print(l1.head)
+print(l1.head.next.data)
+def print_linked_list(head):
+    current=head
+    while current is not None:
+        print(current.data)
+        current=current.next
+print_linked_list(l1.head)
+def print_recursively(head):
+    if head is None:
+        return
+    print(head.data)
+    print_recursively(head.next)
+print_linked_list(l1.head)
+
+
+
+head=Node(10)
+head.next=Node(20)
+head.next.next=Node(30)
+head.next.next.next=Node(40)
+def insert_at_start(head,value):
+    new_node=Node(value)
+
+
+    new_node.next=head
+    return new_node
+head=insert_at_start(head,100)
+print_linked_list(head)
